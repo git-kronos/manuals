@@ -1,18 +1,28 @@
-
 # SSH config
-###### on server
-- sudo apt install openssh-server (sudo pacman -S openssh)
 
-- sudo systemctl status ssh
-- sudo systemctl enable --now ssh
+**on server**
 
-- sudo systemctl status ufw
-- sudo ufw allow ssh
+    sudo apt install openssh-server
 
-###### on client
-- ssh-keygen -f test_key
-- ssh-copy-id -i ~/.ssh/test_server_key user@host
-- authorized_keys
+    sudo systemctl status ssh
+    sudo service ssh status
 
-- /etc/ssh/sshd_config "# PasswordAuthentication yes" -> "PasswordAuthentication no"
-- sudo systemctl reload sshd
+    sudo systemctl enable --now ssh
+
+    sudo systemctl status ufw
+
+    sudo ufw allow ssh
+
+**on client**
+
+    ssh-keygen -f test_key
+    
+    ssh-copy-id -i ~/.ssh/test_server_key user@host
+
+**recomended configuration on client side**
+  
+    authorized_keys
+
+    /etc/ssh/sshd_config "# PasswordAuthentication yes" -> "PasswordAuthentication no"
+
+    sudo systemctl reload sshd
